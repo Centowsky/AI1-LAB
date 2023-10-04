@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  font-size: 0.8rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  padding: 0.25rem;
+}
+
+p {
+  padding: 0 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    padding: 0.5rem;
+  }
+
+  p {
+    padding: 0 0.5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 1.2rem;
+  }
+  p {
+    padding: 0rem 1rem;
+  }
+}
