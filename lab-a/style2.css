@@ -1,36 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap");
 
-body {
-  font-family: "Fira Sans", sans-serif;
+* {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: "Fira Sans", sans-serif;
   box-sizing: border-box;
 }
 
 header {
   background-color: #333;
   color: #fff;
+  padding: 1rem;
+  text-align: center;
 }
 main {
   background-color: #f4f4f4;
-  height: 70vh;
-}
-footer {
-  height: 15vh;
+  padding: 1rem;
 }
 
+h3,
+h4 {
+  padding: 0.5rem;
+}
 p {
   line-height: 1.5;
 }
 
 ul {
   list-style-type: disc;
+  padding-left: 5rem;
 }
 
 footer {
   background-color: #333;
   color: #fff;
+  padding: 0.5rem;
 }
 
-@media (max-width: 600px) {
+a,
+a:visited {
+  color: #131111;
+  font-weight: bold;
+  transition: 1s;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
