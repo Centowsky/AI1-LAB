@@ -40,6 +40,20 @@ footer {
   padding: 0.5rem;
 }
 
+footer a,
+a:visited {
+  color: #131111;
+  font-weight: bold;
+  transition: 1s;
+  text-decoration: none;
+  border-bottom: 3px solid none;
+}
+
+footer a:hover {
+  color: orange;
+  border-bottom: 3px solid orange;
+  text-decoration: none;
+}
 a,
 a:visited {
   color: #131111;
