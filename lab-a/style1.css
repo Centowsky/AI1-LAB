@@ -41,3 +41,30 @@ p {
     padding: 0rem 1rem;
   }
 }
+
+.main-nav li a,
+.main-nav li a:visited {
+  border-bottom: 3px solid none;
+  text-decoration: none;
+  color: #ffdbd5;
+}
+
+.main-nav li:nth-child(1) a:hover {
+  color: #ff0000;
+  border-bottom: 3px solid #ff0000;
+}
+
+.main-nav li:nth-child(2) a:hover {
+  color: #1100ff;
+  border-bottom: 3px solid #1100ff;
+}
+
+.main-nav li:nth-child(3) a:hover {
+  color: #fff;
+  border-bottom: 3px solid #fff;
+}
+
+.main-nav li:nth-child(4) a:hover {
+  color: #fbff00;
+  border-bottom: 3px solid #fbff00;
+}
