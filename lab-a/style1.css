@@ -1,70 +1,164 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&family=Poppins&display=swap");
+
+/* Ogólne style dla całej strony */
+* {
   margin: 0;
   padding: 0;
-  box-sizing: 0;
-  font-size: 0.8rem;
+  box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  padding: 0.25rem;
+/* Stylowanie głównego obszaru treści */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #282c35; /* Ciemny kolor tła */
+  color: #fff; /* Biały kolor tekstu */
 }
 
-p {
-  padding: 0 0.5rem;
+/* Styl nagłówka */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://video-images-cdn.staylive.tv/ejdcwf/thumbnail.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 15vh;
+  padding: 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Cień tekstu */
+}
+
+/* Styl nawigacji głównej */
+nav.main-nav ul {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    135deg,
+    #ff5555,
+    #55aaff
+  ); /* Gradient tła nawigacji */
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 8px; /* Zaokrąglenie rogów */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień */
+}
+
+nav.main-nav ul li {
+  padding: 0.5rem;
+}
+
+nav.main-nav ul li a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+nav.main-nav ul li:nth-child(1) a:hover {
+  color: #ff5555; /* Czerwony kolor przy najechaniu */
+  border-bottom: 3px solid #ff5555;
+}
+
+nav.main-nav ul li:nth-child(2) a:hover {
+  color: #55aaff; /* Jasnoniebieski kolor przy najechaniu */
+  border-bottom: 3px solid #55aaff;
+}
+
+nav.main-nav ul li:nth-child(3) a:hover {
+  color: #eee; /* Jasny kolor przy najechaniu */
+  border-bottom: 3px solid #eee;
+}
+
+nav.main-nav ul li:nth-child(4) a:hover {
+  color: #ffdd33; /* Żółty kolor przy najechaniu */
+  border-bottom: 3px solid #ffdd33;
+}
+
+/* Styl kontenera */
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Styl artykułów */
+.container article {
+  padding: 1.5rem;
+  background-color: #333; /* Ciemny kolor tła artykułów */
+  border-radius: 8px; /* Zaokrąglenie krawędzi */
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Cień */
+}
+
+article h1,
+article h3,
+article h4,
+article p {
+  text-align: center;
+  color: #fff; /* Biały kolor tekstu w artykułach */
+}
+
+article h1,
+article h3,
+article h4 {
+  padding: 1rem 0;
+}
+
+/* Styl obrazków */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+article ul {
+  text-align: center;
+}
+
+article ul li {
+  list-style-type: none;
+}
+
+article p a {
+  color: #ff5555;g
+  transition: color 0.5s;
+}
+
+article p a:hover {
+  color: #ff4444;
+}
+
+/* Styl stopki */
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ff5555, #55aaff);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer a,
+footer a:visited {
+  color: #000000;
+  /text-decoration: none;
+  transition: color 0.5s;
+}
+
+footer a:hover {
+  border-bottom: 3px solid #000000;
 }
 
 @media screen and (min-width: 768px) {
-  body {
-    font-size: 0.9rem;
+  header {
+    justify-content: left;
   }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    padding: 0.5rem;
-  }
-
-  p {
-    padding: 0 0.5rem;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  body {
-    font-size: 1.2rem;
-  }
-  p {
-    padding: 0rem 1rem;
-  }
-}
-
-.main-nav li a,
-.main-nav li a:visited {
-  border-bottom: 3px solid none;
-  text-decoration: none;
-  color: #ffdbd5;
-}
-
-.main-nav li:nth-child(1) a:hover {
-  color: #ff0000;
-  border-bottom: 3px solid #ff0000;
-}
-
-.main-nav li:nth-child(2) a:hover {
-  color: #1100ff;
-  border-bottom: 3px solid #1100ff;
-}
-
-.main-nav li:nth-child(3) a:hover {
-  color: #fff;
-  border-bottom: 3px solid #fff;
-}
-
-.main-nav li:nth-child(4) a:hover {
-  color: #fbff00;
-  border-bottom: 3px solid #fbff00;
 }
