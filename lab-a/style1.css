@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  background-image: url("https://video-images-cdn.staylive.tv/ejdcwf/thumbnail.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 15vh;
+  padding: 1rem;
+  color: #fff;
+}
+
+nav.main-nav ul {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+nav.main-nav ul li {
+  padding: 0.5rem 0;
+}
+
+nav.main-nav ul li a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+nav.main-nav ul li:nth-child(1) a:hover {
+  color: #ff0000;
+  border-bottom: 3px solid #ff0000;
+}
+
+nav.main-nav ul li:nth-child(2) a:hover {
+  color: #0044ff;
+  border-bottom: 3px solid #0044ff;
+}
+
+nav.main-nav ul li:nth-child(3) a:hover {
+  color: #fff;
+  border-bottom: 3px solid #fff;
+}
+
+nav.main-nav ul li:nth-child(4) a:hover {
+  color: #fbff00;
+  border-bottom: 3px solid #fbff00;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container article {
+  padding: 1.5rem;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article p {
+  text-align: center;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+article h1,
+article h2,
+article h3,
+article h4 {
+  padding: 1rem 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+article {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+}
+
+article ul {
+  text-align: center;
+}
+
+article ul li {
+  list-style-type: none;
+}
+
+article p a {
+  color: #ff3838;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+footer a,
+footer a:visited {
+  color: #ff3838;
+  text-decoration: none;
+  transition: 1s;
+}
+
+footer a:hover {
+  border-bottom: 3px solid #ff0000;
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    justify-content: left;
+  }
+
+  nav.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+  }
+
+  article h1,
+  article h2,
+  article h3,
+  article h4,
+  article p {
+    padding: 1rem;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  article img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
