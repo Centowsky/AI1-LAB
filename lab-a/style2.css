@@ -16,7 +16,8 @@ body {
 
 header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   justify-content: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("https://video-images-cdn.staylive.tv/ejdcwf/thumbnail.jpg");
@@ -88,6 +89,46 @@ nav.main-nav ul li:nth-child(4) a:hover {
   box-shadow:  0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
 }
 
+header h1 {
+  font-size: 2rem;
+  color: #ff5555;
+  padding: 0.5rem 1rem;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.3rem;
+  text-align: left; 
+  text-transform: uppercase; 
+}
+
+header h2 {
+  color: #1d59ff;
+  padding: 0.25rem 0.5rem;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(255, 100, 100, 0.5);
+  letter-spacing: 0.3rem;
+  text-align: left; 
+  text-transform: uppercase; 
+}
+
+article h3 {
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(255, 241, 158, 0.5);
+  letter-spacing: 0.2rem; 
+  text-align: center; 
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+}
+
+article p {
+  text-align: justify;
+  padding: 1rem;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #ff5555;
+  border-right: 3px solid #ff5555;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
 article h1,
 article h3,
 article h4,
@@ -111,10 +152,22 @@ img {
 
 article ul {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
 article ul li {
   list-style-type: none;
+  padding: 0.5rem 0;
+  color: #ff5555;
+  font-size: 1.2rem;
+}
+
+article ul li:before {
+  content: "\1F3CD";
+  margin-right: 0.5rem;
 }
 
 article p a {
@@ -152,5 +205,15 @@ footer a:hover {
 @media screen and (min-width: 768px) {
   header {
     justify-content: left;
+  }
+
+  nav.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
   }
 }

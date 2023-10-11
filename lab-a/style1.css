@@ -14,7 +14,8 @@ body {
 
 header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   justify-content: center;
   background-image: url("https://video-images-cdn.staylive.tv/ejdcwf/thumbnail.jpg");
   background-size: cover;
@@ -75,13 +76,17 @@ nav.main-nav ul li:nth-child(4) a:hover {
 }
 
 article h1,
+article h2,
 article h3,
 article h4,
 article p {
   text-align: center;
+  display: block;
+  margin-bottom: 1rem;
 }
 
 article h1,
+article h2,
 article h3,
 article h4 {
   padding: 1rem 0;
@@ -90,6 +95,11 @@ article h4 {
 img {
   max-width: 100%;
   height: auto;
+}
+
+article {
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
 }
 
 article ul {
@@ -141,6 +151,7 @@ footer a:hover {
   }
 
   article h1,
+  article h2,
   article h3,
   article h4,
   article p {
