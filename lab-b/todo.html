@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo Lista</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>ToDo Lista</h1>
+    <div class="todo-container">
+        <div class="task-list">
+            <h2>Lista zadań</h2>
+            <ul id="todo-list"></ul>
+        </div>
+        <div class="add-task-container">
+            <h2>Wyszukaj</h2>
+            <input type="text" id="search-term" placeholder="Wprowadź frazę do wyszukiwania" />
+            <button onclick="searchTasks()">Szukaj</button><hr>
+            <h2>Dodaj zadanie</h2>
+            <input
+            type="text"
+            id="new-task"
+            placeholder="Dodaj nowe zadanie"
+            style="width: 50%"
+            />
+            <input type="date" id="new-task-date" style="width: 50%" />
+            <button onclick="addTask()" ">Dodaj</button>
+        </div>
+    </div>
+            
+  </body>
+  <script src="todo.js" type="text/javascript"></script><script
+  src="https://kit.fontawesome.com/04bee89795.js"
+  crossorigin="anonymous"
+></script>
+</html>
