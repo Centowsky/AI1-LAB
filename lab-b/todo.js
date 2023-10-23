@@ -24,13 +24,20 @@ class Todo {
     const currentDate = new Date();
     const selectedDate = new Date(date);
 
-    if (name.trim() === "") {
-      alert("Nazwa zadania nie może być pusta.");
+    if (name.length < 3) {
+      alert("Nazwa zadania musi składać się co najmniej z 3 znaków.");
       return;
     }
 
-    if (selectedDate < currentDate.setHours(0, 0, 0, 0)) {
-      alert("Data musi być dzisiejsza lub z przyszłości.");
+    if (name.length > 255) {
+      alert("Nazwa zadania nie może przekraczać 255 znaków.");
+      return;
+    }
+
+    if (selectedDate < currentDate.setHours(0, 0, 0, 0) && date.trim() !== "") {
+      alert(
+        "Data musi być dzisiejsza lub w przyszłości lub pozostawić ją pustą."
+      );
       return;
     }
 
@@ -155,6 +162,13 @@ function addTask() {
 
 function searchTasks() {
   const searchTerm = document.getElementById("search-term").value;
-  todo.term = searchTerm;
-  todo.draw();
+
+  if (searchTerm.length >= 2) {
+    todo.term = searchTerm;
+    todo.draw();
+    document.getElementById("search-error").textContent = ""; // Wyczyść ewentualny wcześniejszy błąd
+  } else {
+    document.getElementById("search-error").textContent =
+      "Wprowadź co najmniej 2 znaki.";
+  }
 }
