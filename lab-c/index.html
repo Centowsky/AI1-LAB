@@ -21,6 +21,17 @@
         border: 1px solid black;
       }
 
+      .puzzle-board {
+        width: 600px; /* Dostosuj szerokość */
+        height: 600px; /* Dostosuj wysokość */
+        background-color: #ccc; /* Kolor tła */
+        border: 2px solid #000; /* Gruba krawędź */
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 2px; /* Odstęp między elementami */
+        padding: 10px;
+      }
       .main {
         display: flex;
         flex-direction: row;
@@ -34,8 +45,8 @@
       .right {
         flex: 1;
         display: grid;
-        grid-template-columns: repeat(4, 75px);
-        grid-template-rows: repeat(4, 75px);
+        grid-template-columns: repeat(4, 150px); /* Adjust the size */
+        grid-template-rows: repeat(4, 150px); /* Adjust the size */
         gap: 0;
       }
 
@@ -54,8 +65,8 @@
       }
 
       .board-square {
-        width: 75px;
-        height: 75px;
+        width: 125px; /* Adjust the size */
+        height: 125px; /* Adjust the size */
         border: 1px solid #000;
         position: relative;
       }
@@ -76,173 +87,13 @@
         </div>
       </div>
       <div class="right">
-        <!-- Pole planszy 4x4 -->
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
-        <div
-          class="board-square"
-          ondrop="drop(event)"
-          ondragover="allowDrop(event)"
-        ></div>
+        <div class="puzzle-board">
+          <!-- Add the puzzle board here -->
+        </div>
       </div>
     </div>
 
-    <div id="puzzleContainer">
-      <!-- Dodaj atrybuty draggable do elementów puzzle-piece -->
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-      <div
-        class="puzzle-piece"
-        ondragstart="drag(event)"
-        draggable="true"
-      ></div>
-    </div>
+    <div id="puzzleContainer"></div>
 
     <script>
       var map = L.map("map").setView([53.430127, 14.564802], 18);
@@ -257,29 +108,24 @@
 
       var marker = L.marker([53.430127, 14.564802]).addTo(map);
 
-      // Funkcja do obsługi przeciągania
       function drag(event) {
         event.dataTransfer.setData("text", event.target.id);
       }
 
-      // Funkcja do obsługi upuszczania
       function allowDrop(event) {
         event.preventDefault();
       }
 
-      // Funkcja do obsługi upuszczenia obrazka na planszy
       function drop(event) {
         event.preventDefault();
         var data = event.dataTransfer.getData("text");
         var piece = document.getElementById(data);
         event.target.appendChild(piece);
 
-        // Sprawdź, czy wszystkie obrazki zostały ułożone na planszy
         var boardSquares = document.querySelectorAll(".board-square");
         var puzzlePiecesInBoard =
           document.querySelectorAll(".board-square img");
         if (boardSquares.length === puzzlePiecesInBoard.length) {
-          // Wszystkie obrazki są na planszy
           var isSolved = true;
           for (var i = 0; i < boardSquares.length; i++) {
             if (boardSquares[i].firstChild !== puzzlePiecesInBoard[i]) {
@@ -319,14 +165,10 @@
       document
         .getElementById("saveButton")
         .addEventListener("click", function () {
-          // Clear the puzzle container
           var puzzleContainer = document.getElementById("puzzleContainer");
           puzzleContainer.innerHTML = "";
-
-          // Remove all previously generated puzzle pieces
           puzzlePieces = [];
 
-          // Generate a new image and puzzle
           map.invalidateSize();
           leafletImage(map, function (err, canvas) {
             if (err) {
@@ -341,8 +183,13 @@
               for (var col = 0; col < 4; col++) {
                 var puzzlePiece = document.createElement("div");
                 puzzlePiece.className = "puzzle-piece";
+                puzzlePiece.setAttribute("draggable", "true"); // Set draggable attribute
+                puzzlePiece.ondragstart = function (event) {
+                  drag(event);
+                };
                 puzzlePiece.style.width = pieceWidth + "px";
                 puzzlePiece.style.height = pieceHeight + "px";
+
                 var pieceCanvas = document.createElement("canvas");
                 pieceCanvas.width = pieceWidth;
                 pieceCanvas.height = pieceHeight;
@@ -359,13 +206,10 @@
               }
             }
 
-            // Shuffle the puzzle pieces
             puzzlePieces.sort(function () {
               return 0.5 - Math.random();
             });
 
-            // Display the puzzle pieces
-            var puzzleContainer = document.getElementById("puzzleContainer");
             for (var i = 0; i < puzzlePieces.length; i++) {
               puzzleContainer.appendChild(puzzlePieces[i]);
             }
