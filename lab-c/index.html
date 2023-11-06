@@ -22,14 +22,14 @@
       }
 
       .puzzle-board {
-        width: 600px; /* Dostosuj szerokość */
-        height: 600px; /* Dostosuj wysokość */
-        background-color: #ccc; /* Kolor tła */
-        border: 2px solid #000; /* Gruba krawędź */
+        width: 600px;
+        height: 300px;
+        background-color: #ccc;
+        border: 2px solid #000;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(4, 1fr);
-        gap: 2px; /* Odstęp między elementami */
+        gap: 2px;
         padding: 10px;
       }
       .main {
@@ -86,11 +86,7 @@
           <button id="saveButton">Save Raster Map</button>
         </div>
       </div>
-      <div class="right">
-        <div class="puzzle-board">
-          <!-- Add the puzzle board here -->
-        </div>
-      </div>
+      <div class="right"></div>
     </div>
 
     <div id="puzzleContainer"></div>
