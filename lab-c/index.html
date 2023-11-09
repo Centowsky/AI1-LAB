@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -15,63 +14,39 @@
         height: 300px;
         border: 1px solid black;
       }
-      #rasterMap {
-        width: 300px;
-        height: 150px;
-        border: 1px solid black;
-      }
-
-      .puzzle-board {
-        width: 600px;
-        height: 300px;
-        background-color: #ccc;
-        border: 2px solid #000;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        gap: 2px;
-        padding: 10px;
-      }
       .main {
         display: flex;
         flex-direction: row;
         padding: 1rem;
       }
-
       .left {
         flex: 1;
       }
-
       .right {
         flex: 1;
-        display: grid;
-        grid-template-columns: repeat(4, 150px); /* Adjust the size */
-        grid-template-rows: repeat(4, 150px); /* Adjust the size */
-        gap: 0;
       }
-
-      .puzzleContainer {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
       .puzzle-piece {
         display: inline-block;
-        width: 75px;
+        width: calc(25% - 10px);
         height: 75px;
         background-color: #fff;
         border: 1px solid #000;
+        margin: 5px;
       }
-
-      .board-square {
-        width: 125px; /* Adjust the size */
-        height: 125px; /* Adjust the size */
-        border: 1px solid #000;
+      .board {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        width: 400px;
+      }
+      .block {
+        background-size: cover;
         position: relative;
+        border: 2px solid #333;
+        background-color: #ddb2b2;
+        height: 100px;
       }
-
-      .board-square img {
+      .block img {
         width: 100%;
         height: 100%;
       }
@@ -86,10 +61,14 @@
           <button id="saveButton">Save Raster Map</button>
         </div>
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <div class="board" id="board"></div>
+      </div>
     </div>
 
     <div id="puzzleContainer"></div>
+    <br /><br />
+    <img id="originalRasterImage" style="display: none" />
 
     <script>
       var map = L.map("map").setView([53.430127, 14.564802], 18);
@@ -102,35 +81,110 @@
         }
       ).addTo(map);
 
-      var marker = L.marker([53.430127, 14.564802]).addTo(map);
-
       function drag(event) {
         event.dataTransfer.setData("text", event.target.id);
+      }
+
+      function dragOver(event) {
+        event.preventDefault();
+      }
+
+      function dragStart(event) {
+        var dragImage = event.target.cloneNode(true);
+        dragImage.id = "dragImage";
+        dragImage.style.position = "absolute";
+        dragImage.style.zIndex = "1000";
+        document.body.appendChild(dragImage);
+        event.dataTransfer.setDragImage(dragImage, 0, 0);
+        event.dataTransfer.setData("text", event.target.id);
+      }
+
+      function dragStartBlock(event) {
+        var dragImage = event.target.cloneNode(true);
+        dragImage.id = "dragImage";
+        dragImage.style.position = "absolute";
+        dragImage.style.zIndex = "1000";
+        document.body.appendChild(dragImage);
+        event.dataTransfer.setDragImage(dragImage, 0, 0);
+        event.dataTransfer.setData("text", event.target.id);
+      }
+
+      function dragEnd(event) {
+        var dragImage = document.getElementById("dragImage");
+        if (dragImage) {
+          dragImage.parentNode.removeChild(dragImage);
+        }
       }
 
       function allowDrop(event) {
         event.preventDefault();
       }
 
+      var blocks = document.querySelectorAll(".block");
+      blocks.forEach(function (block) {
+        block.addEventListener("dragstart", dragStartBlock);
+      });
+
       function drop(event) {
         event.preventDefault();
         var data = event.dataTransfer.getData("text");
         var piece = document.getElementById(data);
-        event.target.appendChild(piece);
 
-        var boardSquares = document.querySelectorAll(".board-square");
-        var puzzlePiecesInBoard =
-          document.querySelectorAll(".board-square img");
-        if (boardSquares.length === puzzlePiecesInBoard.length) {
-          var isSolved = true;
-          for (var i = 0; i < boardSquares.length; i++) {
-            if (boardSquares[i].firstChild !== puzzlePiecesInBoard[i]) {
-              isSolved = false;
-              break;
+        if (event.target.classList.contains("block")) {
+          var block = event.target;
+
+          var hasChild = block.hasChildNodes();
+
+          if (piece.firstChild instanceof HTMLCanvasElement) {
+            // Swap the background images if both blocks have children
+            if (hasChild && piece.parentNode !== block) {
+              var tempBackground = block.style.backgroundImage;
+              block.style.backgroundImage = piece.style.backgroundImage;
+              piece.style.backgroundImage = tempBackground;
             }
+
+            // Set the background image for the block
+            block.style.backgroundImage = `url(${piece.firstChild.toDataURL()})`;
+
+            // Add the second child as a background if the block already has a child
+            if (hasChild) {
+              var secondChild = document.createElement("div");
+              secondChild.style.width = "100%";
+              secondChild.style.height = "100%";
+              secondChild.style.position = "absolute";
+              secondChild.style.backgroundImage = `url(${piece.firstChild.toDataURL()})`;
+              block.appendChild(secondChild);
+            }
+
+            // If the block doesn't have a child, add the piece as a child
+            if (!hasChild) {
+              block.appendChild(piece);
+              piece.style.display = "none";
+
+              var puzzleContainer = document.getElementById("puzzleContainer");
+
+              if (piece.parentNode === puzzleContainer) {
+                puzzleContainer.removeChild(piece);
+              }
+            }
+          } else {
+            console.error("Invalid puzzle piece dropped");
           }
-          if (isSolved) {
-            alert("Ułożono!");
+
+          var boardSquares = document.querySelectorAll(".block");
+          var puzzlePiecesInBoard = document.querySelectorAll(".block div");
+
+          if (boardSquares.length === puzzlePiecesInBoard.length) {
+            var isSolved = true;
+            for (var i = 0; i < boardSquares.length; i++) {
+              if (boardSquares[i].firstChild !== puzzlePiecesInBoard[i]) {
+                isSolved = false;
+                break;
+              }
+            }
+            if (isSolved) {
+              alert("Ułożono poprwanie!");
+            }
           }
         }
       }
@@ -147,10 +201,6 @@
                 lat.toFixed(6) +
                 "<br>Longitude: " +
                 lon.toFixed(6);
-              marker.setLatLng([lat, lon]);
-              marker
-                .bindPopup("<strong>Your Location</strong><br>" + coords)
-                .openPopup();
               map.setView([lat, lon], 18);
             });
           } else {
@@ -165,12 +215,37 @@
           puzzleContainer.innerHTML = "";
           puzzlePieces = [];
 
+          const board = document.getElementById("board");
+
+          board.innerHTML = "";
+
+          for (let i = 1; i <= 16; i++) {
+            const block = document.createElement("div");
+            block.classList.add("block");
+            block.setAttribute("draggable", "true");
+            block.ondragstart = function (event) {
+              drag(event);
+            };
+            block.addEventListener("dragover", dragOver);
+            block.addEventListener("drop", drop);
+            block.addEventListener("dragleave", allowDrop);
+
+            block.id = "block" + i;
+            board.appendChild(block);
+          }
+
           map.invalidateSize();
           leafletImage(map, function (err, canvas) {
             if (err) {
               console.error(err);
               return;
             }
+
+            var originalRasterImage = document.getElementById(
+              "originalRasterImage"
+            );
+            originalRasterImage.src = canvas.toDataURL("image/png");
+            originalRasterImage.style.display = "none";
 
             var pieceWidth = canvas.width / 4;
             var pieceHeight = canvas.height / 4;
@@ -179,15 +254,23 @@
               for (var col = 0; col < 4; col++) {
                 var puzzlePiece = document.createElement("div");
                 puzzlePiece.className = "puzzle-piece";
-                puzzlePiece.setAttribute("draggable", "true"); // Set draggable attribute
+                puzzlePiece.setAttribute("draggable", "true");
                 puzzlePiece.ondragstart = function (event) {
                   drag(event);
                 };
                 puzzlePiece.style.width = pieceWidth + "px";
                 puzzlePiece.style.height = pieceHeight + "px";
+                puzzlePiece.id = "puzzlePiece" + (row * 4 + col + 1);
 
                 var pieceCanvas = document.createElement("canvas");
                 pieceCanvas.width = pieceWidth;
+
+                var block = document.getElementsByClassName("block");
+
+                for (var i = 0; i < block.length; i++) {
+                  block[i].style.width = pieceWidth + "px";
+                  block[i].style.height = pieceHeight + "px";
+                }
                 pieceCanvas.height = pieceHeight;
                 var ctx = pieceCanvas.getContext("2d");
                 ctx.drawImage(
@@ -199,6 +282,7 @@
                 );
                 puzzlePiece.appendChild(pieceCanvas);
                 puzzlePieces.push(puzzlePiece);
+                puzzleContainer.appendChild(puzzlePiece);
               }
             }
 
@@ -207,6 +291,7 @@
             });
 
             for (var i = 0; i < puzzlePieces.length; i++) {
+              puzzlePieces[i].addEventListener("dragend", dragEnd);
               puzzleContainer.appendChild(puzzlePieces[i]);
             }
           });
