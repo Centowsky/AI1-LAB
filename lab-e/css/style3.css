@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&family=Poppins&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #282c35;
+  color: #fff; 
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://video-images-cdn.staylive.tv/ejdcwf/thumbnail.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 15vh;
+  padding: 1rem;
+  color: #fff;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.5); /
+}
+
+nav.main-nav ul {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    135deg,
+    #ff5555,
+    #55aaff
+  ); 
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 0.5rem; 
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+nav.main-nav ul li {
+  padding: 0.5rem;
+}
+
+nav.main-nav ul li a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+nav.main-nav ul li:nth-child(1) a:hover {
+  color: #ff5555; 
+  border-bottom: 3px solid #ff5555;
+}
+
+nav.main-nav ul li:nth-child(2) a:hover {
+  color: #55aaff; 
+  border-bottom: 3px solid #55aaff;
+}
+
+nav.main-nav ul li:nth-child(3) a:hover {
+  color: #eee; 
+  border-bottom: 3px solid #eee;
+}
+
+nav.main-nav ul li:nth-child(4) a:hover {
+  color: #ffdd33; 
+  border-bottom: 3px solid #ffdd33;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container article {
+  padding: 1.5rem;
+  background-color: #333; 
+  border-radius: 0.5rem; 
+  margin-bottom: 2rem;
+  box-shadow:  0.2rem 0.2rem 0.4rem rgba(248, 38, 38, 0.2);
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #ff5555;
+  padding: 0.5rem 1rem;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.3rem;
+  text-align: left; 
+  text-transform: uppercase; 
+}
+
+header h2 {
+  color: #1d59ff;
+  padding: 0.25rem 0.5rem;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(255, 100, 100, 0.5);
+  letter-spacing: 0.3rem;
+  text-align: left; 
+  text-transform: uppercase; 
+}
+
+article h3 {
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  text-shadow: 0.2rem 0.2rem 0.4rem rgba(255, 241, 158, 0.5);
+  letter-spacing: 0.2rem; 
+  text-align: center; 
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+}
+
+article p {
+  text-align: justify;
+  padding: 1rem;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #ff5555;
+  border-right: 3px solid #ff5555;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+article h1,
+article h3,
+article h4,
+article p {
+  text-align: center;
+  color: #fff;
+}
+
+article h1,
+article h3,
+article h4 {
+  padding: 1rem 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+article ul {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+article ul li {
+  list-style-type: none;
+  padding: 0.5rem 0;
+  color: #1d59ff;
+  font-size: 1.2rem;
+}
+
+article ul li:before {
+  content: "\1F3CD";
+  margin-right: 0.5rem;
+}
+
+article p a {
+  color: #8255ff;
+  transition: color 0.5s;
+}
+
+article p a:hover {
+  color: #44ffb1;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #162461, #55ff6c);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow:  0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+footer a,
+footer a:visited {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+footer a:hover {
+  border-bottom: 3px solid #000000;
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    justify-content: left;
+  }
+
+  nav.main-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+  }
+}
