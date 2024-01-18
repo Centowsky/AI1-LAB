@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pogoda</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
+
+      h1 {
+        color: #333;
+      }
+      h2 {
+        display: block;
+        width: 100%;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+
+      #addressInput {
+        width: 200px;
+        padding: 5px;
+      }
+
+      button {
+        padding: 8px 16px;
+        margin-top: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #currentWeather,
+      #forecast {
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #3f3f3f;
+        background-color: #cacaca;
+      }
+
+      #forecast {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .dayForecast {
+        display: flex;
+        flex-direction: row;
+        margin: 1rem;
+        background-color: #e6dfdf;
+      }
+
+      .hourlyForecast {
+        text-align: center;
+        width: 30%;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pogoda</h1>
+    <label for="addressInput">Wpisz swoje miasto</label>
+    <input type="text" id="addressInput" placeholder="Miasto" />
+    <button onclick="getWeather()">Pobierz pogodę</button>
+    <div id="currentWeather"></div>
+    <div id="forecast"></div>
+
+    <script src="js/weather.js"></script>
+  </body>
+</html>
